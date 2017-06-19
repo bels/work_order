@@ -1,0 +1,70 @@
+% content_for add_customer => begin
+	%= form_for add_customer => (method => 'POST', class => 'form-horizontal') => begin
+		<div class="form-group">
+			%= label_for first_name => 'First Name', class => 'col-sm-2 control-label'
+			<div class="col-sm-10">
+				%= text_field 'first_name', class => 'form-control', id => 'first_name', placeholder => 'First Name'
+			</div>
+		</div>
+		<div class="form-group">
+			%= label_for middle_name => 'Middle Name', class => 'col-sm-2 control-label'
+			<div class="col-sm-10">
+				%= text_field 'middle_name', class => 'form-control', id => 'middle_name', placeholder => 'Middle Name'
+			</div>
+		</div>
+		<div class="form-group">
+			%= label_for surname => 'Last Name', class => 'col-sm-2 control-label'
+			<div class="col-sm-10">
+				%= text_field 'surname', class => 'form-control', id => 'surname', placeholder => 'Last Name'
+			</div>
+		</div>
+		<div class="form-group">
+			%= label_for street => 'Street Address', class => 'col-sm-2 control-label'
+			<div class="col-sm-10">
+				%= text_field 'street', class => 'form-control', id => 'street', placeholder => 'Street Address'
+			</div>
+		</div>
+		<div class="form-group">
+			%= label_for city => 'City', class => 'col-sm-2 control-label'
+			<div class="col-sm-10">
+				%= text_field 'city', class => 'form-control', id => 'city', placeholder => 'City'
+			</div>
+		</div>
+		<div class="form-group">
+			%= label_for state => 'State', class => 'col-sm-2 control-label'
+			<div class="col-sm-10">
+				%= text_field 'state', class => 'form-control', id => 'state', placeholder => 'State'
+			</div>
+		</div>
+		<div class="form-group">
+			%= label_for zip => 'Zip', class => 'col-sm-2 control-label'
+			<div class="col-sm-10">
+				%= text_field 'zip', class => 'form-control', id => 'zip', placeholder => 'Zip'
+			</div>
+		</div>
+		<div class="form-group">
+			%= label_for email => 'Email', class => 'col-sm-2 control-label'
+			<div class="col-sm-10">
+				%= email_field 'email', class => 'form-control', id => 'email', placeholder => 'Email Address'
+			</div>
+		</div>
+		<div class="form-group">
+			%= label_for phone_number => 'Phone Number', class => 'col-sm-2 control-label'
+			<div class="col-sm-10">
+				%= tel_field 'phone_number', class => 'form-control', id => 'phone_number', placeholder => 'Phone Number'
+			</div>
+		</div>
+		<div class="form-group">
+			%= label_for phone_type => 'Phone Type', class => 'col-sm-2 control-label'
+			<div class="col-sm-10">
+				%= select_field 'phone_type' => stash('phone_types'), class => 'form-control', id => 'phone_type'
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default create-customer">Create</button>
+			</div>
+		</div>
+	% end
+
+% end

@@ -1,0 +1,10 @@
+% layout 'default';
+% title 'New Work Order';
+
+%= include 'customer/add_customer_form'
+
+<button class="btn btn-default add-customer">Add Customer</button>
+
+<div class="hidden customer-form">
+	%= content_for 'add_customer'
+</div>
