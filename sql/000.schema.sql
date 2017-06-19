@@ -1,0 +1,3 @@
+CREATE EXTENSION "pgcrypto";
+CREATE EXTENSION "uuid-ossp";
+CREATE SCHEMA IF NOT EXISTS work_order AUTHORIZATION wo_user;
