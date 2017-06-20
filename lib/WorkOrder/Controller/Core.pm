@@ -35,7 +35,7 @@ sub list_workorders{
 	my $self = shift;
 	
 	my $work_orders = $self->work_order->list_all;
-	warn $self->dumper($work_orders);
+
 	$self->stash(
 		wos => $work_orders
 	);
@@ -43,34 +43,36 @@ sub list_workorders{
 
 sub get_workorder{
 	my $self = shift;
-	
+
+	my $states = $self->pg->db->query('select name,id from wo_state where active = true')->arrays->to_array;
+
+	$self->stash(
+		wo => $self->work_order->get($self->param('id')),
+		wo_states => $states,
+		id => $self->param('id')
+	);
 }
 
 sub edit_workorder{
 	my $self = shift;
 	
+	$self->work_order->edit($self->req->params->to_hash);
+	
+	$self->redirect_to($self->url_for('get_workorder'));
 }
 
 sub approve_workorder_form{
 	my $self = shift;
-	
-	my $wo = $self->work_order->get($self->session('wo_id'));
-	
-	warn $self->dumper($wo);
-	
+
 	$self->stash(
-		wo => $wo
+		wo => $self->work_order->get($self->session('wo_id'))
 	);
 }
 
 sub approve_workorder{
 	my $self = shift;
 	
-	if($self->param('approval')){
-		$self->pg->db->query("update work_order set customer_accepted = true,wo_state = (select id from wo_state where name = 'Approved') where id = ?", $self->param('wo_id'));
-	} else {
-		$self->pg->db->query("update work_order set wo_state = (select id from wo_state where name = 'Not Approved') where id = ?", $self->param('wo_id'));
-	}
+	$self->work_order->approve($self->req->params->to_hash);
 	$self->session(wo_id => undef); #clearing this out
 	$self->redirect_to($self->url_for('index'));
 }

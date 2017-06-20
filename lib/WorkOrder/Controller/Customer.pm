@@ -14,7 +14,12 @@ sub add{
 
 sub list_all{
 	my $self = shift;
-	#we will check if this is an ajax request.  if it is, we will just return data, if not we will render a page
+	
+	my $customers = $self->customer->list_all;
+
+	$self->stash(
+		customers => $customers
+	);
 }
 
 sub edit{

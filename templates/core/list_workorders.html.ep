@@ -12,7 +12,7 @@
 		<tbody>
 			% foreach my $wo (@{$wos}){
 				<tr>
-					<td><a href="<%= url_for('get_workorder') %>/<%= $wo->{'id'} %>" class="btn btn-default">Get</a></td>
+					<td><a href="<%= url_for('get_workorder') %><%= $wo->{'id'} %>" class="btn btn-default">Get</a></td>
 					<td><%= $wo->{'genesis'} %></td>
 					<td><%= $wo->{'work_order_number'} %></td>
 					<td><%= $wo->{'customer_name'} %></td>
