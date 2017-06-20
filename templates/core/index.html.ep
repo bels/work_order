@@ -1,8 +1,13 @@
 % layout 'default';
 % title 'Index';
 
-<a href="/representative/add" class="btn btn-default">Add Representative</a>
-<a href="/representative/list" class="btn btn-default">List Representatives</a>
-<a href="/work_order/new" class="btn btn-default">New Work Order</a>
-<a href="/work_order/list" class="btn btn-default">List Work Orders</a>
-<a href="/customer/list" class="btn btn-default">List Customers</a>
+	<div class="col-sm-offset-3 col-sm-6">
+		<div class="jumbotron">
+			<h1>Infinity Technology Services <small>Work Order System</small></h1>
+			<a href="/representative/add" class="btn btn-default">Add Representative</a>
+			<a href="/representative/list" class="btn btn-default">List Representatives</a>
+			<a href="/work_order/new" class="btn btn-default">New Work Order</a>
+			<a href="/work_order/list" class="btn btn-default">List Work Orders</a>
+			<a href="/customer/list" class="btn btn-default">List Customers</a>
+		</div>
+	</div>

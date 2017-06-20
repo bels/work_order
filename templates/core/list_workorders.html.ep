@@ -2,21 +2,26 @@
 % title 'All Work Orders';
 
 
-	<table>
-		<thead>
-			<th></th>
-			<th>Date</th>
-			<th>WO Number</th>
-			<th>Customer</th>
-		</thead>
-		<tbody>
-			% foreach my $wo (@{$wos}){
-				<tr>
-					<td><a href="<%= url_for('get_workorder') %><%= $wo->{'id'} %>" class="btn btn-default">Get</a></td>
-					<td><%= $wo->{'genesis'} %></td>
-					<td><%= $wo->{'work_order_number'} %></td>
-					<td><%= $wo->{'customer_name'} %></td>
-				</tr>
-			% }
-		</tbody>
-	</table>
+	<h1>All Work Orders</h1>
+	<a href="<%= url_for('index') %>" class="btn btn-danger">Back to Index</a>
+	<br>
+	<div class="col-sm-4">
+		<table class="table">
+			<thead>
+				<th></th>
+				<th>Date</th>
+				<th>WO Number</th>
+				<th>Customer</th>
+			</thead>
+			<tbody>
+				% foreach my $wo (@{$wos}){
+					<tr>
+						<td><a href="<%= url_for('get_workorder') %><%= $wo->{'id'} %>" class="btn btn-default">Get</a></td>
+						<td><%= $wo->{'genesis'} %></td>
+						<td><%= $wo->{'work_order_number'} %></td>
+						<td><%= $wo->{'customer_name'} %></td>
+					</tr>
+				% }
+			</tbody>
+		</table>
+	</div>

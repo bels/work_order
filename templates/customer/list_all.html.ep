@@ -2,17 +2,22 @@
 % title 'All Customers';
 
 
-	<table>
-		<thead>
-			<th></th>
-			<th>Name</th>
-		</thead>
-		<tbody>
-			% foreach my $customer (@{$customers}){
-				<tr>
-					<td><a href="<%= url_for('get_customer') %>/<%= $customer->[1] %>" class="btn btn-default">Get</a></td>
-					<td><%= $customer->[0] %></td>
-				</tr>
-			% }
-		</tbody>
-	</table>
+	<h1>All Customers</h1>
+	<a href="<%= url_for('index') %>" class="btn btn-danger">Back to Index</a>
+	<br>
+	<div class="col-sm-4">
+		<table class="table">
+			<thead>
+				<th></th>
+				<th>Name</th>
+			</thead>
+			<tbody>
+				% foreach my $customer (@{$customers}){
+					<tr>
+						<td><a href="<%= url_for('get_customer') %>/<%= $customer->[1] %>" class="btn btn-default">Get</a></td>
+						<td><%= $customer->[0] %></td>
+					</tr>
+				% }
+			</tbody>
+		</table>
+	</div>
