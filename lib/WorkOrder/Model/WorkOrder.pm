@@ -7,7 +7,7 @@ has 'debug';
 sub add{
 	my ($self,$params) = @_;
 	
-	my $id = $self->pg->db->query('insert into work_order(customer,representative,problem_description,labor_rate,wo_state,site) values(?,?,?,?,?) returning id',
+	my $id = $self->pg->db->query('insert into work_order(customer,representative,problem_description,labor_rate,wo_state,site) values(?,?,?,?,?,?) returning id',
 		$params->{'customer'},$params->{'representative'},$params->{'problem'},$params->{'labor_rate'},$params->{'wo_state'},$params->{'site'})->hash;
 		
 	return $id->{'id'};
