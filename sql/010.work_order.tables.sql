@@ -82,7 +82,8 @@ CREATE TABLE work_order(
 	labor_rate UUID REFERENCES labor_rate(id) ON DELETE SET NULL,
 	parts_cost NUMERIC,
 	customer_accepted BOOLEAN DEFAULT false,
-	wo_state UUID REFERENCES wo_state(id) ON DELETE SET NULL
+	wo_state UUID REFERENCES wo_state(id) ON DELETE SET NULL,
+	site UUID REFERENCES sites(id) ON DELETE SET NULL
 );
 
 GRANT USAGE, SELECT ON SEQUENCE work_order_work_order_number_seq TO wo_user;

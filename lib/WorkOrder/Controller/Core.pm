@@ -12,6 +12,7 @@ sub new_workorder_form{
 	my $phone_types = $self->pg->db->query('select type,id from phone_types where active = true order by type asc')->arrays->to_array;
 	my $states = $self->pg->db->query('select name,id from wo_state where active = true')->arrays->to_array;
 	my $representatives = $self->rep->list_all;
+	my $sites = $self->pg->db->query('select name,id from sites where active = true order by name asc')->arrays->to_array;
 	my $labor_rates = $self->pg->db->query("select rate::TEXT || ' - ' || code,id from labor_rate where active = true order by rate asc")->arrays->to_array;
 	$self->stash(
 		customers => $customers,
@@ -19,6 +20,7 @@ sub new_workorder_form{
 		wo_states => $states,
 		representatives => $representatives,
 		labor_rates => $labor_rates,
+		sites => $sites,
 		js => ['/js/private/new_wo.js']
 	);
 }
