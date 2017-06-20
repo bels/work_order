@@ -44,6 +44,8 @@ sub startup {
   $r->get('/representative/:id')->to('representative#get_rep')->name('get_representative');
   $r->get('/work_order/new')->to('core#new_workorder_form')->name('new_workorder_form');
   $r->post('/work_order/new')->to('core#new_workorder')->name('new_workorder');
+  $r->get('/work_order/approve')->to('core#approve_workorder_form')->name('approve_workorder_form');
+  $r->post('/work_order/approve')->to('core#approve_workorder')->name('approve_workorder');
   $r->get('/work_order/list')->to('core#list_workorders')->name('list_workorders');
   $r->post('/work_order/edit/:id')->to('core#edit_workorder')->name('edit_workorder');
   $r->get('/work_order/:id')->to('core#get_workorder')->name('get_workorder');

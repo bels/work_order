@@ -16,9 +16,9 @@ sub add{
 	}
 }
 
-sub list{
+sub list_all{
 	my $self = shift;
 	
-	return $self->pg->db->query('select * from customer order by surname asc')->hashes->to_array;
+	return $self->pg->db->query("select first_name || ' ' || surname, id from customer order by surname asc")->arrays->to_array;
 }
 1;

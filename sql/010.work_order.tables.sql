@@ -57,19 +57,35 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON labor_rate TO wo_user;
 CREATE TRIGGER integrity_enforcement BEFORE UPDATE ON labor_rate
 	FOR EACH ROW EXECUTE PROCEDURE integrity_enforcement();
 
+CREATE TABLE wo_state(
+	id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+	genesis TIMESTAMPTZ DEFAULT current_timestamp,
+	modified TIMESTAMPTZ DEFAULT current_timestamp,
+	name TEXT NOT NULL,
+	active BOOLEAN DEFAULT true
+);
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON wo_state TO wo_user;
+CREATE TRIGGER integrity_enforcement BEFORE UPDATE ON wo_state
+	FOR EACH ROW EXECUTE PROCEDURE integrity_enforcement();
+
 CREATE TABLE work_order(
 	id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
 	genesis TIMESTAMPTZ DEFAULT current_timestamp,
 	modified TIMESTAMPTZ DEFAULT current_timestamp,
 	work_order_number BIGSERIAL,
 	representative UUID REFERENCES representative(id) ON DELETE SET NULL,
+	customer UUID REFERENCES customer(id) ON DELETE CASCADE,
 	problem_description TEXT,
 	work_performed TEXT,
 	hours NUMERIC,
+	labor_rate UUID REFERENCES labor_rate(id) ON DELETE SET NULL,
 	parts_cost NUMERIC,
-	customer_accepted BOOLEAN DEFAULT false
+	customer_accepted BOOLEAN DEFAULT false,
+	wo_state UUID REFERENCES wo_state(id) ON DELETE SET NULL
 );
 
+GRANT USAGE, SELECT ON SEQUENCE work_order_work_order_number_seq TO wo_user;
 GRANT SELECT, INSERT, UPDATE, DELETE ON work_order TO wo_user;
 CREATE TRIGGER integrity_enforcement BEFORE UPDATE ON work_order
 	FOR EACH ROW EXECUTE PROCEDURE integrity_enforcement();
