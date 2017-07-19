@@ -28,6 +28,18 @@ sub startup {
 	state $core = WorkOrder::Model::WorkOrder->new(pg => $app->pg, debug => $app->app->mode eq 'development' ? 1 :  0) ;
   });
   
+  $self->helper(set_selected => sub{
+  	#must pass in an array ref containing a hashref in each element
+  	my ($app,$list,$index_to_match,$selected) = @_;
+
+  	for my $i (0 .. scalar @{$list} - 1){
+  		if($list->[$i][$index_to_match] eq $selected){
+  			push(@{$list->[$i]},selected => 'selected');
+  		}
+  	}
+  	
+  	return $list;
+  });
   $self->pg->search_path(['work_order','public']);
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer') if $config->{perldoc};

@@ -1,0 +1,9 @@
+% layout 'default';
+% title 'Customer';
+
+<a href="<%= url_for('index') %>" class="btn btn-danger">Back to Index</a><br><br>
+	First Name: <%= stash('first_name') %><br>
+	Last Name: <%= stash('surname') %><br>
+	Phone: <%= stash('phone_number') %><br>
+	Email: <%= stash('email') %><br>
+	

@@ -84,7 +84,7 @@ select
 	wo.hours,
 	wo.work_performed,
 	wo.parts_cost,
-	wo.site
+	s.name as site
 from
 	work_order wo
 join
@@ -103,6 +103,10 @@ join
 	wo_state ws
 on
 	wo.wo_state = ws.id
+join
+	sites s
+on
+	wo.site = s.id
 where
 	wo.id = ?
 SQL

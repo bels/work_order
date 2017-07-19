@@ -15,7 +15,7 @@
 				url: $form.attr('action'),
 				data: $form.serialize()
 			}).done(function(data){
-				console.log('we did something');
+				window.location.href = window.location.href;
 			});
 		});
 	});

@@ -5,7 +5,6 @@ sub add_form{
 	my $self = shift;
 	
 	my $sites = $self->pg->db->query('select name,id from sites where active = true order by name asc')->arrays->to_array;
-	warn $self->dumper($sites);
 	$self->stash(
 		sites => $sites
 	);

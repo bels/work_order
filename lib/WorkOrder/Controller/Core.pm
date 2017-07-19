@@ -47,10 +47,11 @@ sub get_workorder{
 	my $self = shift;
 
 	my $states = $self->pg->db->query('select name,id from wo_state where active = true')->arrays->to_array;
+	my $wo = $self->work_order->get($self->param('id'));
 
 	$self->stash(
-		wo => $self->work_order->get($self->param('id')),
-		wo_states => $states,
+		wo => $wo,
+		wo_states => $self->set_selected($states,1,$wo->{'wo_state'}),
 		id => $self->param('id')
 	);
 }

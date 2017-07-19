@@ -14,7 +14,7 @@
 			<tbody>
 				% foreach my $customer (@{$customers}){
 					<tr>
-						<td><a href="<%= url_for('get_customer') %>/<%= $customer->[1] %>" class="btn btn-default">Get</a></td>
+						<td><a href="<%= url_for('get_customer') %><%= $customer->[1] %>" class="btn btn-default">Get</a></td>
 						<td><%= $customer->[0] %></td>
 					</tr>
 				% }

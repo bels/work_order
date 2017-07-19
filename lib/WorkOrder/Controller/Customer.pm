@@ -28,6 +28,14 @@ sub edit{
 
 sub get_customer{
 	my $self = shift;
+	
+	my $customer = $self->customer->get_customer($self->param('id'));
+	$self->stash(
+		first_name => $customer->{'first_name'},
+		surname => $customer->{'surname'},
+		phone_number => $customer->{'phone_number'},
+		email => $customer->{'email'}
+	);
 }
 
 1;

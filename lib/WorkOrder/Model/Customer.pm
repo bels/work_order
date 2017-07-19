@@ -21,4 +21,29 @@ sub list_all{
 	
 	return $self->pg->db->query("select first_name || ' ' || surname, id from customer order by surname asc")->arrays->to_array;
 }
+
+sub get_customer{
+	my ($self,$id) = @_;
+
+my $sql =<<SQL;
+select
+	first_name,
+	surname,
+	phone_number,
+	email
+from
+	customer
+join
+	phone_number
+on
+	phone_number.customer = customer.id
+join
+	email
+on
+	email.customer = customer.id
+where
+	customer.id = ?
+SQL
+	return $self->pg->db->query($sql,$id)->hash;
+}
 1;
