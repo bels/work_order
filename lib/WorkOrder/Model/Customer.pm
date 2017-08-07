@@ -14,6 +14,7 @@ sub add{
 		$self->pg->db->query('insert into phone_number(customer,phone_number,type) values(?,?,?)',$result->{'id'},$params->{'phone_number'},$params->{'phone_type'});
 		$self->pg->db->query('insert into email(customer,email) values(?,?)',$result->{'id'},$params->{'email'});
 	}
+	return $result->{'id'};
 }
 
 sub list_all{
