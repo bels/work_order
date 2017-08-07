@@ -15,7 +15,6 @@
 				url: $form.attr('action'),
 				data: $form.serialize()
 			}).done(function(data){
-				//window.location.href = window.location.href;
 				$('#customer').append('<option value="' + data.id + '" selected="selected">' + data.name + '</option');
 				$('#customerModal').modal('hide');
 			});
