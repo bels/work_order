@@ -48,7 +48,12 @@ set
 where
 	id = ?
 SQL
-
+	if($params->{'hours'} !~ /\d+/){ #checking to make sure hours isn't empty or a string
+		$params->{'hours'} = 0;
+	}
+	if($params->{'parts_cost'} !~ /\d+/){ #checking to make sure parts_cost isn't empty or a string
+		$params->{'parts_cost'} = 0;
+	}
 	$self->pg->db->query($sql,$params->{'work_performed'},$params->{'hours'},$params->{'wo_state'},$params->{'parts_cost'},$params->{'wo_id'});
 	return;
 }
