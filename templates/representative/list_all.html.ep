@@ -13,7 +13,7 @@
 			<tbody>
 				% foreach my $rep (@{$reps}){
 					<tr>
-						<td><a href="<%= url_for('get_representative') %>/<%= $rep->[1] %>" class="btn btn-default">Get</a></td>
+						<td><a href="<%= url_for('get_representative') %><%= $rep->[1] %>" class="btn btn-default">Get</a></td>
 						<td><%= $rep->[0] %></td>
 					</tr>
 				% }

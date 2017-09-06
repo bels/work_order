@@ -1,0 +1,9 @@
+% layout 'default';
+% title 'Representative';
+
+<a href="<%= url_for('index') %>" class="btn btn-danger">Back to Index</a><br><br>
+	First Name: <%= stash('first_name') %><br>
+	Last Name: <%= stash('surname') %><br>
+	Phone: <%= stash('phone') %><br>
+	Email: <%= stash('email') %><br>
+	Site: <%= stash('site') %><br>

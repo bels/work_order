@@ -16,4 +16,10 @@ sub list_all{
 	
 	return $self->pg->db->query("select first_name || ' ' || surname, id from representative order by surname asc")->arrays->to_array;
 }
+
+sub get{
+	my ($self,$rep) = @_;
+
+	return $self->pg->db->query('select r.id, r.genesis, first_name, surname, email, phone, name as site from work_order.representative r join work_order.sites s on r.site = s.id where r.id = ?', $rep)->hash;
+}
 1;

@@ -31,6 +31,17 @@ sub edit{
 
 sub get_rep{
 	my $self = shift;
-	
+
+warn $self->dumper($self->param('id'));
+	my $rep = $self->rep->get($self->param('id'));
+	warn $self->dumper($rep);
+	$self->stash(
+		template => 'representative/get_rep',
+		first_name => $rep->{'first_name'},
+		surname => $rep->{'surname'},
+		email => $rep->{'email'},
+		site => $rep->{'site'},
+		phone => $rep->{'phone'}
+	);
 }
 1;
