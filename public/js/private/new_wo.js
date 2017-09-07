@@ -9,8 +9,7 @@
 			var $form = $(this).closest('form');
 			e.preventDefault();
 			var data = $form.serialize();
-			console.log($form.attr('method'));
-			$.ajax({
+			console.log($form.attr('method'));			$.ajax({
 				method: $form.attr('method'),
 				url: $form.attr('action'),
 				data: $form.serialize()

@@ -7,7 +7,7 @@ sub add_form{
 
 sub add{
 	my $self = shift;
-	
+
 	my $id = $self->customer->add($self->req->params->to_hash);
 	my $name = $self->param('first_name') . ' ' . $self->param('surname');
 	$self->render(json => {success => Mojo::JSON->true, id => $id, name => $name}, status => 200);

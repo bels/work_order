@@ -21,7 +21,8 @@ sub new_workorder_form{
 		representatives => $representatives,
 		labor_rates => $labor_rates,
 		sites => $sites,
-		js => ['/js/private/new_wo.js']
+		js => ['/js/private/new_wo.js','/js/private/customer.js'],
+		styles => ['/css/private/customer.css']
 	);
 }
 

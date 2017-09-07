@@ -11,7 +11,15 @@ sub add{
 		$params->{'first_name'},$params->{'middle_name'},$params->{'surname'},$params->{'street'},$params->{'city'},$params->{'state'},$params->{'zip'})->hash;
 	if(defined($result->{'id'})){
 		#later loop and accept multiple
-		$self->pg->db->query('insert into phone_number(customer,phone_number,type) values(?,?,?)',$result->{'id'},$params->{'phone_number'},$params->{'phone_type'});
+		if(ref($params->{'phone_number'}) eq 'ARRAY'){
+			my $index = 0;
+			foreach my $phone_number (@{$params->{'phone_number'}}){
+				$self->pg->db->query('insert into phone_number(customer,phone_number,type) values(?,?,?)',$result->{'id'},$phone_number,$params->{'phone_type'}->[$index]);
+				$index++;
+			}
+		} else {
+			$self->pg->db->query('insert into phone_number(customer,phone_number,type) values(?,?,?)',$result->{'id'},$params->{'phone_number'},$params->{'phone_type'});
+		}
 		$self->pg->db->query('insert into email(customer,email) values(?,?)',$result->{'id'},$params->{'email'});
 	}
 	return $result->{'id'};
