@@ -19,6 +19,8 @@ sub list_all{
 	my $customers = $self->customer->list_all;
 
 	$self->stash(
+		js => ['https://cdn.datatables.net/v/bs/jqc-1.12.4/dt-1.10.15/cr-1.3.3/datatables.min.js','/js/private/customer.js'],
+		styles => ['https://cdn.datatables.net/v/bs/jqc-1.12.4/dt-1.10.15/cr-1.3.3/datatables.min.css'],
 		customers => $customers
 	);
 }

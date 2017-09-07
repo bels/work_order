@@ -40,6 +40,8 @@ sub list_workorders{
 	my $work_orders = $self->work_order->list_all;
 
 	$self->stash(
+		js => ['https://cdn.datatables.net/v/bs/jqc-1.12.4/dt-1.10.15/cr-1.3.3/datatables.min.js','/js/private/work_order.js'],
+		styles => ['https://cdn.datatables.net/v/bs/jqc-1.12.4/dt-1.10.15/cr-1.3.3/datatables.min.css'],
 		wos => $work_orders
 	);
 }
