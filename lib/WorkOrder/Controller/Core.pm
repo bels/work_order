@@ -71,7 +71,8 @@ sub approve_workorder_form{
 	my $self = shift;
 
 	$self->stash(
-		wo => $self->work_order->get($self->session('wo_id'))
+		wo => $self->work_order->get($self->session('wo_id')),
+		js => ['/js/private/approve_work_order.js']
 	);
 }
 

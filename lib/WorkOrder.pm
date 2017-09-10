@@ -15,7 +15,7 @@ sub startup {
   $self->helper(pg => sub { state $pg = Mojo::Pg->new( shift->config('pg'))});
   $self->helper(rep => sub { 
 	my $app = shift;
-	state $core = WorkOrder::Model::Representative->new(pg => $app->pg, debug => $app->app->mode eq 'development' ? 1 :  0) ;
+	state $rep = WorkOrder::Model::Representative->new(pg => $app->pg, debug => $app->app->mode eq 'development' ? 1 :  0) ;
   });
   
   $self->helper(customer => sub { 

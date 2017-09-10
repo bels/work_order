@@ -47,14 +47,14 @@
 				<div class="col-sm-offset-2 col-sm-10">
 					<div class="checkbox">
 						<label>
-						<%= check_box approval => 1%> Customer Approval 
+						<%= check_box approval => 1, id => 'approve_chk_box' %> Customer Approval 
 						</label>
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default submit-approval">Submit For Approval</button>
+					<button type="submit" class="btn btn-default submit-approval" disabled>Submit For Approval</button>
 				</div>
 			</div>
 		% end
